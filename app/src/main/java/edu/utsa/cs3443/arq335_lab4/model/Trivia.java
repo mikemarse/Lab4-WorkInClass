@@ -2,7 +2,9 @@ package edu.utsa.cs3443.arq335_lab4.model;
 
 import android.app.Activity;
 import android.content.res.AssetManager;
+import android.util.Log;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,7 +34,12 @@ public class Trivia {
     public Trivia() {
         System.out.println("Explicit default constructor");
     }
+
     //TODO: Create the setters and getters for all the instance variables
+
+    public String getCorrectAnswer() {
+        return this.correctAnswer;
+    }
 
     //loadTrivia: This method will take in an Activity (MainActivity) from input as an argument, it reads the file and stores
     //one piece of trivia from that file.
@@ -69,8 +76,10 @@ public class Trivia {
 
             int j = 1;
             String line = "";
+
             while(j<lineNumber) {
                 line = scanner.nextLine();
+                j++;
             }
             //when the loop is over, I am standing right by the line that I want to return
             line = scanner.nextLine();
@@ -84,16 +93,32 @@ public class Trivia {
             for(int k = 4; k < lineSplit.length; k++) {
                 this.descriptionAnswer = this.descriptionAnswer + "," + lineSplit[k];
             }
+            identifyCorrectAnswer();
             return (this);
         } catch(FileNotFoundException e) {
-            System.err.println("File not found");
+            Log.d("Exception", "File not found");
         } catch(IOException e) {
-            System.err.println("IO exception, which is a superclass of FileNotFoundException");
+            //IO Exception can happen for various reasons
+            Log.d("File Exception", "IO Exception");
         }
+        //if catch happens, meaning we have an error reading or accessing the file:
+        //Program control will be going through catch, we see a print statement
+        //then the program control returns (this)
+        //this is pointing to the current object of trivia but all instance variables (such as question, options, etc.)
+        //are going to be null because we weren't successful in reading them from the file
         return this;
     }
     private void identifyCorrectAnswer() {
         //takes all the options and checks if the description contains any of the options,
         //if so, that option becomes the correct answers
+        if(this.descriptionAnswer.contains(this.option1)) {
+            this.correctAnswer = option1;
+        }
+        else if(this.descriptionAnswer.contains(this.option2)) {
+            this.correctAnswer = option2;
+        }
+        else {
+            this.correctAnswer = option3;
+        }
     }
 }
