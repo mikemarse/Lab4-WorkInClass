@@ -38,9 +38,10 @@ public class Trivia {
     //one piece of trivia from that file.
 
     /**
-     *
-     * @param activity
-     * @return
+     * @param: Activity activity
+     * @return: Trivia object
+     * loadTrivia: This method takes in an Activity from input as an argument, it reads the file
+     * and stores 1 piece of trivia from that file.
      */
 
     public Trivia loadTrivia(Activity activity) {
