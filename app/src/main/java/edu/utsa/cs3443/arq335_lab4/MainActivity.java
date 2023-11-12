@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setupButtons();
     }
 
     @Override
@@ -25,7 +26,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Do I need to send anything to the other views from this view?
         //if button clicked is trick then go to the TrickActivity
         //else go to the TreatActivity
-        //Intent intent = new Intent(MainActivity.this, )
+        Button clickedButton = (Button) view;
+        String buttonText = clickedButton.getText().toString().toLowerCase();
+        if(buttonText.equalsIgnoreCase("treat")) {
+            Intent treatIntent = new Intent(MainActivity.this, TreatActivity.class);
+            startActivity(treatIntent);
+        }
+        else if (buttonText.equalsIgnoreCase("trick")) {
+            Intent trickIntent = new Intent(MainActivity.this, TrickActivity.class);
+            startActivity(trickIntent);
+        }
     }
 
     private void setupButtons() {

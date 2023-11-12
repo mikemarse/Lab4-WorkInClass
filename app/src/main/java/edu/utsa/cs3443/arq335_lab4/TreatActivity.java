@@ -10,5 +10,7 @@ public class TreatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treat);
+        //probably call all the stuff I need
+        //setupPicture();
     }
 }

@@ -37,6 +37,31 @@ public class Trivia {
 
     //TODO: Create the setters and getters for all the instance variables
 
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+    public String getQuestion() {
+        return this.question;
+    }
+    public void setOption1(String option1) {
+        this.option1 = option1;
+    }
+    public String getOption1() {
+        return this.option1;
+    }
+    public void setOption2(String option2) {
+        this.option2 = option2;
+    }
+    public String getOption2() {
+        return this.option2;
+    }
+    public void setOption3(String option3) {
+        this.option3 = option3;
+    }
+    public String getOption3() {
+        return this.option3;
+    }
+
     public String getCorrectAnswer() {
         return this.correctAnswer;
     }
@@ -51,7 +76,7 @@ public class Trivia {
      * and stores 1 piece of trivia from that file.
      */
 
-    public Trivia loadTrivia(Activity activity) {
+    public void loadTrivia(Activity activity) {
         //Get an instance of AssetManager
         //Read the file in asset folder using InputStream
         //How many lines are in this file, the number of lines are equivalent to the number of trivia questions
@@ -94,7 +119,7 @@ public class Trivia {
                 this.descriptionAnswer = this.descriptionAnswer + "," + lineSplit[k];
             }
             identifyCorrectAnswer();
-            return (this);
+            //return (this);
         } catch(FileNotFoundException e) {
             Log.d("Exception", "File not found");
         } catch(IOException e) {
@@ -106,7 +131,7 @@ public class Trivia {
         //then the program control returns (this)
         //this is pointing to the current object of trivia but all instance variables (such as question, options, etc.)
         //are going to be null because we weren't successful in reading them from the file
-        return this;
+        //return this;
     }
     private void identifyCorrectAnswer() {
         //takes all the options and checks if the description contains any of the options,

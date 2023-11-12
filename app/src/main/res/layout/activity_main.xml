@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:gravity="center">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Trick or Treat?"
+        android:textSize="30dp"
+        android:fontFamily="cursive"
         android:layout_gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,19 +24,25 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:id="@+id/image_view_main"
-        android:src="@drawable/image1"/>
+        android:src="@drawable/image1"
+        android:layout_margin="20dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:id="@+id/button_1"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Button 1"
-        android:id="@+id/button_1" />
+        android:background="@drawable/trick_bg"
+        android:text="Trick"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp" />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Button 2"
-        android:id="@+id/button_2" />
+        android:text="Treat"
+        android:id="@+id/button_2"
+        android:background="@drawable/treat_bg"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

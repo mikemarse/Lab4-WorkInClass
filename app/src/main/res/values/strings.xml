@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">arq335-Lab4</string>
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Incorrect</string>
 </resources>
