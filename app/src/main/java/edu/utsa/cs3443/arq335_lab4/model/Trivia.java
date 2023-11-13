@@ -91,22 +91,6 @@ public class Trivia {
         try {
             InputStream input = manager.open("trivia.csv");
             scanner = new Scanner(input);
-//            int counter = 0;
-//            while(scanner.hasNext()) {
-//                counter++;
-//            }
-//            System.out.println("Number of lines: " + counter);
-//            //Randomly select a number from 1 to counter
-//            SecureRandom sRandom = new SecureRandom();
-//            int lineNumber = sRandom.nextInt(counter) + 1;
-//
-//            int j = 1;
-//            String line = "";
-//
-//            while(j<lineNumber) {
-//                line = scanner.nextLine();
-//                j++;
-//            }
             String line = "";
             ArrayList<String> lines = new ArrayList<String>();
             while (scanner.hasNext()) {
@@ -114,8 +98,6 @@ public class Trivia {
             }
             SecureRandom secureRandom = new SecureRandom();
             line = lines.get(secureRandom.nextInt(lines.size()));
-            //when the loop is over, I am standing right by the line that I want to return
-            //line = scanner.nextLine();
             String[] lineSplit = line.trim().split(",");
             this.question = lineSplit[0].trim();
             this.option1 = lineSplit[1].trim();
@@ -127,7 +109,6 @@ public class Trivia {
                 this.descriptionAnswer = this.descriptionAnswer + "," + lineSplit[k];
             }
             identifyCorrectAnswer();
-            //return (this);
         } catch(FileNotFoundException e) {
             Log.d("Exception", "File not found");
         } catch(IOException e) {

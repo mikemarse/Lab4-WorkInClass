@@ -63,6 +63,7 @@ public class TrickActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void setupButton() {
+        //set up buttons by their ids. and set the text to it
         int[] buttonIDs = {R.id.button_1, R.id.button_2, R.id.button_3};
         String[] buttonText = {option1, option2, option3};
         for (int i = 0; i < buttonIDs.length; i++) {
