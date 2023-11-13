@@ -3,6 +3,7 @@ package edu.utsa.cs3443.arq335_lab4;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,7 +31,7 @@ public class TrickActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         Button clickedButton = (Button)view;
-        String answerClicked = clickedButton.getText().toString().toLowerCase();
+        String answerClicked = clickedButton.getText().toString();
         //we have answer clicked text, now we need to compare it to the correct answer and based on if its correct,
         //we have display correct answer or incorrect answer toast.
         if (answerClicked == correctAns) {
@@ -48,15 +49,11 @@ public class TrickActivity extends AppCompatActivity implements View.OnClickList
         Trivia trivia = new Trivia();
         trivia.loadTrivia(this);
         //if i have getter methods in trivia class, I can simply retrieve them and use them in this trick activity class
-
-        //*******
-        //******* I MIGHT NOT NEED THE THIS.
-        //*******
         this.question = trivia.getQuestion();
         this.option1 = trivia.getOption1();
         this.option2 = trivia.getOption2();
         this.option3 = trivia.getOption3();
-        correctAns = trivia.getCorrectAnswer();
+        this.correctAns = trivia.getCorrectAnswer();
     }
 
     public void setupQuestionText() {
@@ -66,7 +63,7 @@ public class TrickActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void setupButton() {
-        int[] buttonIDs = {R.id.button_1, R.id.button_2};
+        int[] buttonIDs = {R.id.button_1, R.id.button_2, R.id.button_3};
         String[] buttonText = {option1, option2, option3};
         for (int i = 0; i < buttonIDs.length; i++) {
             Button button = findViewById(buttonIDs[i]);

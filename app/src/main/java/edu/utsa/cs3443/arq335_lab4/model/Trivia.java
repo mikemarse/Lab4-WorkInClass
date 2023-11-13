@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Trivia {
@@ -90,24 +91,31 @@ public class Trivia {
         try {
             InputStream input = manager.open("trivia.csv");
             scanner = new Scanner(input);
-            int counter = 0;
-            while(scanner.hasNext()) {
-                counter++;
-            }
-            System.out.println("Number of lines: " + counter);
-            //Randomly select a number from 1 to counter
-            SecureRandom sRandom = new SecureRandom();
-            int lineNumber = sRandom.nextInt(counter) + 1;
-
-            int j = 1;
+//            int counter = 0;
+//            while(scanner.hasNext()) {
+//                counter++;
+//            }
+//            System.out.println("Number of lines: " + counter);
+//            //Randomly select a number from 1 to counter
+//            SecureRandom sRandom = new SecureRandom();
+//            int lineNumber = sRandom.nextInt(counter) + 1;
+//
+//            int j = 1;
+//            String line = "";
+//
+//            while(j<lineNumber) {
+//                line = scanner.nextLine();
+//                j++;
+//            }
             String line = "";
-
-            while(j<lineNumber) {
-                line = scanner.nextLine();
-                j++;
+            ArrayList<String> lines = new ArrayList<String>();
+            while (scanner.hasNext()) {
+                lines.add(scanner.nextLine());
             }
+            SecureRandom secureRandom = new SecureRandom();
+            line = lines.get(secureRandom.nextInt(lines.size()));
             //when the loop is over, I am standing right by the line that I want to return
-            line = scanner.nextLine();
+            //line = scanner.nextLine();
             String[] lineSplit = line.trim().split(",");
             this.question = lineSplit[0].trim();
             this.option1 = lineSplit[1].trim();
